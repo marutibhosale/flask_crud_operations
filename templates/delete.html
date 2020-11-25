@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Data</title>
+</head>
+    <h1>Delete user</h1>
+    <form action="/delete/{{ data[0][0] }}" method="post">
+        <input type="text" name="id" value="{{ data[0][0] }}"/>
+        <input type="text" name="name" value="{{ data[0][1] }}"/>
+        <input type="text" name="email" value="{{ data[0][2] }}"/>
+        <input type = 'submit' name="delete" value = 'Delete'/>
+    </form>
+
+
+</body>
+</html>

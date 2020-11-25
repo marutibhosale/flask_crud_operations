@@ -62,6 +62,24 @@ def update(id):
     except UndefinedError:
         return "Sorry! id " + str(id) + " not exist"
 
+@app.route('/delete/<int:id>', methods=['GET', 'POST'])
+def delete(id):
+    if request.method == "POST":
+        cur = mysql.connection.cursor()
+        cur.execute("""DELETE FROM user WHERE id=%s""", (id,))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for("show"))
+
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM user WHERE id=%s", (id,))
+        data = cur.fetchall()
+        cur.close()
+        return render_template("delete.html", data=data)
+    except UndefinedError:
+        return "Sorry! id " + str(id) + " not exist"
+
 
 if __name__ == "__main__":
     app.run(debug=True)
