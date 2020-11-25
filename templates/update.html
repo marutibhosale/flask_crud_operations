@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Data</title>
+</head>
+    <h1>Update user</h1>
+    <form action="/update/{{ data[0][0] }}" method="post">
+        <input type="text" name="id" value="{{ data[0][0] }}"/>
+        <input type="text" name="name" value="{{ data[0][1] }}"/>
+        <input type="text" name="email" value="{{ data[0][2] }}"/>
+        <input type = 'submit' name="update" value = 'Update'/>
+    </form>
+
+
+</body>
+</html>
