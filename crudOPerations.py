@@ -1,14 +1,14 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_mysqldb import MySQL
-
+import os
 from jinja2 import UndefinedError
 
 
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = '{{ $user_name }}'
-app.config['MYSQL_PASSWORD'] = '{{ $password }}'
+app.config['MYSQL_USER'] = os.environ['user_name']
+app.config['MYSQL_PASSWORD'] = os.environ['password']
 app.config['MYSQL_DB'] = 'flaskCrud'
 
 mysql = MySQL(app)
