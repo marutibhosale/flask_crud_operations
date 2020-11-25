@@ -31,5 +31,14 @@ def create():
     return render_template("create.html")
 
 
+@app.route('/show')
+def show():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM user")
+    data = cur.fetchall()
+    cur.close()
+    return render_template("show.html", data=data)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
